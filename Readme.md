@@ -15,3 +15,7 @@ Checked all checkbox with name "nameCheckbox"
 ```javascript
 $.fn.formHelper('checkAll', '#myFormID', 'nameCheckbox', true); // unchecked set false the last parameter
 ```
+Check/Uncheck using another input checkbox
+```javascript
+$.fn.formHelper('checkAll', '#myFormID', 'nameCheckbox', $("#masterCheckbox"));
+```
