@@ -119,7 +119,7 @@
                 var data = {};
                 data[key] = $(this).val();
                 $.post(action, data, null, 'json').done(function (result) {
-                    // var result = [{value: '11', text: 'ttt1'}, {value: '22', text: 'ttt2'}];
+                    $sel2.empty();
                     $.each(result, function (k, v) {
                         var $opt = $('<option>');
                         $opt.val(v.value);
