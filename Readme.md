@@ -9,3 +9,9 @@ OR with static method
 var frmValues = '{"var1": "", "var2": ""}';
 $.fn.formHelper('fillForm', "#myFormID", frmValues);
 ```
+### Check all input checkbox
+#### Static method 'checkAll'
+Checked all checkbox with name "nameCheckbox"
+```javascript
+$.fn.formHelper('checkAll', '#myFormID', 'nameCheckbox', true); // unchecked set false the last parameter
+```
