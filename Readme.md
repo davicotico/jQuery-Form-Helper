@@ -2,7 +2,7 @@
 ### Populate Form
 ```javascript
 var frmValues = '{"var1": "", "var2": ""}';
-$('#frmCadastro').formHelper({data: frmValues, errorClass: 'alert-danger', successClass: 'alert-success'});
+$('#myFormID').formHelper({data: frmValues});
 ```
 OR with static method
 ```javascript
