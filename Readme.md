@@ -17,6 +17,18 @@ We have a checkbox array:
 <label><input type="checkbox" name="nameCheckbox[]" value="3"> Option 3</label>
 ```
 #### Static method 'checkAll'
+Check input checkbox with name "nameCheckbox" and values "1", "3" (Option 1 and Option 3)
+```javascript
+$.fn.formHelper('setCheckbox', '#myFormID', 'nameCheckbox', '["1", "3"]');
+```
+### Check all input checkbox
+We have a checkbox array:
+```html
+<label><input type="checkbox" name="nameCheckbox[]" value="1"> Option 1</label>
+<label><input type="checkbox" name="nameCheckbox[]" value="2"> Option 2</label>
+<label><input type="checkbox" name="nameCheckbox[]" value="3"> Option 3</label>
+```
+#### Static method 'checkAll'
 Check all input checkbox with name "nameCheckbox"
 ```javascript
 $.fn.formHelper('checkAll', '#myFormID', 'nameCheckbox', true); // for unchecked: Set false the last parameter
