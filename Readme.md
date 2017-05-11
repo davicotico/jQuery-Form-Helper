@@ -7,7 +7,7 @@ $('#myFormID').formHelper({data: frmValues});
 OR with static method
 ```javascript
 var frmValues = '{"var1": "", "var2": ""}';
-$.fn.formHelper('fillForm', "#myFormID", frmValues);
+$.fn.formHelper('populateForm', "#myFormID", frmValues);
 ```
 ### Check all input checkbox
 We have a checkbox array:
@@ -27,4 +27,13 @@ Check/Uncheck using another input checkbox
 ```
 ```javascript
 $.fn.formHelper('checkAll', '#myFormID', 'nameCheckbox', $("#masterCheckbox"));
+```
+### Chained selects
+Chain input select and populate select with result ajax.
+```javascript
+$.fn.formHelper('chainSelect', 'http://yourdomain.com/app/post.php', $('#select1'), $('#select2'));
+```
+The response must be an array json:
+```
+[{"value": "1", "text": "Option 1"}, {"value": "2", "text": "Option 2"}, ...]
 ```
