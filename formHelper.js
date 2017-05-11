@@ -1,3 +1,7 @@
+/**
+ * formHelper
+ * @author David Ticona Saravia
+ * */
 (function ($) {
     var methods = {
         init: function (options) {
@@ -5,11 +9,12 @@
                 data: '',
                 selectorMessage: '#message',
                 errorClass: 'error',
-                successClass: 'success'
+                successClass: 'success',
+                ajax: false
             }, options);
             var frmValues = settings.data;
-            methods.fillForm(this, frmValues);
-            if (this.data('ajax') === 1) {
+            methods.populateForm(this, frmValues);
+            if ((this.data('ajax')) === 1 || (settings.ajax)) {
                 $(settings.selectorMessage).hide();
                 settingAjax(this);
             }
@@ -36,7 +41,7 @@
                 });
             }
         },
-        fillForm: function (form, values) {
+        populateForm: function (form, values) {
             if (values === '')
                 return;
             var $form = (form instanceof jQuery) ? form : $(form);
@@ -60,7 +65,7 @@
                         }
                         break;
                     case 'radio':
-                        $el.filter('[value="' + val + '"]').attr('checked', 'checked');
+                        $el.filter('[value="' + val + '"]').prop('checked', true);
                         break;
                     default:
                         $el.val(val);
@@ -111,7 +116,7 @@
             }
             $form.find("[name='" + name + "\\[\\]']").prop('checked', checked);
         },
-        chainedSelect: function (action, select1, select2) {
+        chainSelect: function (action, select1, select2) {
             var $sel1 = (select1 instanceof jQuery) ? select1 : $(select1);
             var $sel2 = (select2 instanceof jQuery) ? select2 : $(select2);
             var key = $sel1.attr('name');
