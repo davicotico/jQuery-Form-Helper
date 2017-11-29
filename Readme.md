@@ -7,19 +7,19 @@ Populate a form from a object. Each key for each input with the key name
 var frmValues = {"var1": "value1", "var2": "value2"};
 $("#myFormID").populateForm(frmValues);
 ```
-## Plugin checkInput
+## .checkInput(nameCheckbox, values)
 We have a checkbox array:
 ```html
-<label><input type="checkbox" name="nameCheckbox[]" value="1"> Option 1</label>
-<label><input type="checkbox" name="nameCheckbox[]" value="2"> Option 2</label>
-<label><input type="checkbox" name="nameCheckbox[]" value="3"> Option 3</label>
+<label><input type="checkbox" name="myCheckbox[]" value="1"> Option 1</label>
+<label><input type="checkbox" name="myCheckbox[]" value="2"> Option 2</label>
+<label><input type="checkbox" name="myCheckbox[]" value="3"> Option 3</label>
 ```
 
 Check input checkbox with name "nameCheckbox" and values "1", "3" (Option 1 and Option 3)
 ```javascript
-$('#myFormID').checkInput('nameCheckbox', ["1", "3"]);
+$('#myFormID').checkInput('myCheckbox', ["1", "3"]);
 ```
-## Plugin checkAll
+## .checkAll(nameCheckbox, value)
 
 We have a checkbox array:
 ```html
@@ -40,7 +40,7 @@ Check/Uncheck using another input checkbox
 ```javascript
 $('#myFormID').checkAll('nameCheckbox', $("#masterCheckbox")); // And here connect the master checkbox
 ```
-## Plugin chainedSelect
+## .chainedSelect(action, jqSelect2, options)
 Chain input select and populate select with result ajax.
 ```javascript
 $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'));
