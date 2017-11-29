@@ -1,11 +1,11 @@
 # How to use
-### Populate Form
+## Plugin Populate Form
 
 ```javascript
 var frmValues = '{"var1": "", "var2": ""}';
 $("#myFormID").populateForm(frmValues);
 ```
-#### Plugin 'checkInput'
+## Plugin checkInput
 We have a checkbox array:
 ```html
 <label><input type="checkbox" name="nameCheckbox[]" value="1"> Option 1</label>
@@ -17,7 +17,7 @@ Check input checkbox with name "nameCheckbox" and values "1", "3" (Option 1 and 
 ```javascript
 $('#myFormID').checkInput('nameCheckbox', ["1", "3"]);
 ```
-### Plugin checkAll
+## Plugin checkAll
 
 We have a checkbox array:
 ```html
@@ -37,10 +37,10 @@ Check/Uncheck using another input checkbox
 ```javascript
 $('#myFormID').checkAll('nameCheckbox', $("#masterCheckbox"));
 ```
-### Chained selects
+## Plugin chainedSelect
 Chain input select and populate select with result ajax.
 ```javascript
-$('#select1').chainSelect($('#select2'), 'http://yourdomain.com/app/post.php');
+$('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'));
 ```
 The response must be an array json:
 ```
