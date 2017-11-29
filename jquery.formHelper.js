@@ -104,11 +104,12 @@
         }
         $.each(data, function (name, val) {
             var $el = $form.find("[name='" + name + "']");
-            if ($.isArray(val)) {
-                var selector = "[name='" + name + "\\[\\]']";
+            let isSelect = $el.is('select');
+            if ($.isArray(val)){
+                let selector = "[name='" + name + "\\[\\]']";
                 $el = $form.find(selector);
             }
-            var type = $el.attr('type');
+            var type = (isSelect) ? 'select' : $el.attr('type');
             switch (type) {
                 case 'checkbox':
                     if ($.isArray(val)) {
@@ -122,6 +123,16 @@
                     break;
                 case 'radio':
                     $el.filter('[value="' + val + '"]').prop('checked', true);
+                    break;
+                case 'select':
+                    if ($.isArray(val)){
+                        $el.children('option').each(function(){
+                            let state = methods.inArray($(this).val(), val);
+                            $(this).prop('selected', state);
+                        });
+                    } else{
+                        $el.val(val);
+                    }
                     break;
                 default:
                     $el.val(val);
@@ -164,8 +175,7 @@
                 $.each(result, function (k, v) {
                     let $opt = $('<option>');
                     let item = formatOption(v);
-                    $opt.val(item.value);
-                    $opt.append(item.text);
+                    $opt.val(item.value).append(item.text);
                     $sel2.append($opt);
                 });
                 if (settings.debug)
