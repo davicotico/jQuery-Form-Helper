@@ -2,7 +2,7 @@
 ## Plugin Populate Form
 
 ```javascript
-var frmValues = '{"var1": "", "var2": ""}';
+var frmValues = {"var1": "value1", "var2": "value2"};
 $("#myFormID").populateForm(frmValues);
 ```
 ## Plugin checkInput
@@ -32,10 +32,11 @@ $('#myFormID').checkAll('nameCheckbox', true); // for unchecked: Set false the l
 ```
 Check/Uncheck using another input checkbox
 ```html
+<!-- We need a master checkbox -->
 <label><input type="checkbox" id="masterCheckbox"> Check All</label>
 ```
 ```javascript
-$('#myFormID').checkAll('nameCheckbox', $("#masterCheckbox"));
+$('#myFormID').checkAll('nameCheckbox', $("#masterCheckbox")); // And here connect the master checkbox
 ```
 ## Plugin chainedSelect
 Chain input select and populate select with result ajax.
