@@ -1,5 +1,8 @@
 # How to use
 ## Plugin Populate Form
+```.populateForm(values)
+
+Populate a form from a object. Each key for each input with the key name
 
 ```javascript
 var frmValues = {"var1": "value1", "var2": "value2"};
