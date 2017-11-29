@@ -1,6 +1,5 @@
-# How to use
-## Plugin Populate Form
-```.populateForm(values)
+# Plugins
+## .populateForm(values)
 
 Populate a form from a object. Each key for each input with the key name
 
