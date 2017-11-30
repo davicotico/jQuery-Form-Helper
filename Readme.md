@@ -72,5 +72,8 @@ $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'),
 |Option|Type|Description|
 |---|---|---|
 |keyAsValue|bool| (Default: false) Populate the select using the key result as option value|
-|data|object|Aditional data to send in the request|
+|data|object|Aditional data to send with the request|
 |debug|bool|Print the response in the console on fail|
+
+### Return
+* jQuery Return the second select, then we can use the return with a thirdy select.
