@@ -63,3 +63,10 @@ In the last case use the option parameter 'keyAsValue'
 ```javascript
 $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'), {keyAsValue: true});
 ```
+#### Options
+
+|Option|Type|Description|
+|---|---|---|
+|keyAsValue|bool| (Default: false) Populate the select using the value for key and value|
+|data|object|Aditional data to send in the request|
+|debug|bool|Print the response in the console on fail|
