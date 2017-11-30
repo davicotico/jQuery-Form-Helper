@@ -49,7 +49,17 @@ Chain input select and populate select with result ajax.
 ```javascript
 $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'));
 ```
-The $('#select2') will be populate with the response. The response must be an array json:
+The $('#select2') will be populate with the response.
+
+The response must be an array json:
 ```
 [{"value": "1", "text": "Option 1"}, {"value": "2", "text": "Option 2"}, ...]
+```
+or like this:
+```
+["Option 1", "Option 2", "Option 3", ...]
+```
+for the last case, use the next option parameter:
+```javascript
+$('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'), {keyAsValue: true});
 ```
