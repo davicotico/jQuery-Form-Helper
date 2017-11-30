@@ -77,3 +77,31 @@ $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'),
 
 ### Return
 * jQuery Return the second select, then we can use the return with a third select.
+
+## .clickSubmit(options)
+
+Submit all data attributes from a clickable element (anchor, button, etc.)
+
+```html
+<a href="#" data-id="1121" class="send">Send</a>
+<a href="#" data-id="1122" class="send">Send</a>
+<a href="#" data-id="1123" class="send">Send</a>
+```
+```javascript
+$('.send').clickSubmit();
+```
+
+## .clickAjax(options)
+Send an Ajax Post Request with all data attributes from a clickable element.
+```html
+<a href="#" data-id="1121" class="send">Send</a>
+<a href="#" data-id="1122" class="send">Send</a>
+<a href="#" data-id="1123" class="send">Send</a>
+```
+
+```javascript
+var sendAjax = $('.send').clickAjax();
+sendAjax.done(function(r){
+    console.log('Response: '+r);
+});
+```
