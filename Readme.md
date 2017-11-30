@@ -1,3 +1,7 @@
+# Requirements
+
+* jQuery >= 1.10 
+
 # Plugins
 ## .populateForm(values)
 
@@ -5,7 +9,7 @@ Populate a form from a object. Each key for each input with the key name
 
 ```javascript
 var frmValues = {"var1": "value1", "var2": "value2"};
-$("#myFormID").populateForm(frmValues);
+$("#myForm").populateForm(frmValues);
 ```
 ## .checkInput(nameCheckbox, values)
 We have a checkbox array:
@@ -17,7 +21,7 @@ We have a checkbox array:
 
 Check input checkbox with name "nameCheckbox" and values "1", "3" (Option 1 and Option 3)
 ```javascript
-$('#myFormID').checkInput('myCheckbox', ["1", "3"]);
+$('#myForm').checkInput('myCheckbox', ["1", "3"]);
 ```
 ## .checkAll(nameCheckbox, value)
 
@@ -30,7 +34,7 @@ We have a checkbox array:
 
 Check all input checkbox with name "nameCheckbox"
 ```javascript
-$('#myFormID').checkAll('nameCheckbox', true); // for unchecked: Set false the last parameter
+$('#myForm').checkAll('nameCheckbox', true); // for unchecked: Set false the last parameter
 ```
 Check/Uncheck using another input checkbox
 ```html
@@ -38,7 +42,7 @@ Check/Uncheck using another input checkbox
 <label><input type="checkbox" id="masterCheckbox"> Check All</label>
 ```
 ```javascript
-$('#myFormID').checkAll('nameCheckbox', $("#masterCheckbox")); // And here connect the master checkbox
+$('#myForm').checkAll('nameCheckbox', $("#masterCheckbox")); // And here connect the master checkbox
 ```
 ## .chainedSelect(action, jqSelect2, options)
 Chain input select and populate select with result ajax.
