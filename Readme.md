@@ -53,11 +53,11 @@ The $('#select2') will be populate with the response.
 
 The response must be an array json like this:
 ```
-[{"value": "1", "text": "Option 1"}, {"value": "2", "text": "Option 2"}, ...]
+["Option 1", "Option 2", "Option 3", ...]
 ```
 or like this:
 ```
-["Option 1", "Option 2", "Option 3", ...]
+[{"value": "1", "text": "Option 1"}, {"value": "2", "text": "Option 2"}, ...]
 ```
 In the last case use the option parameter 'keyAsValue'
 ```javascript
@@ -67,6 +67,6 @@ $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'),
 
 |Option|Type|Description|
 |---|---|---|
-|keyAsValue|bool| (Default: false) Populate the select using the value for key and value|
+|keyAsValue|bool| (Default: false) Populate the select using the key result as option value|
 |data|object|Aditional data to send in the request|
 |debug|bool|Print the response in the console on fail|
