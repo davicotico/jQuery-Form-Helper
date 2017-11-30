@@ -59,7 +59,7 @@ or like this:
 ```
 ["Option 1", "Option 2", "Option 3", ...]
 ```
-for the last case, use the next option parameter:
+for the last case use the option parameter:
 ```javascript
 $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'), {keyAsValue: true});
 ```
