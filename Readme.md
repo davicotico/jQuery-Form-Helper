@@ -59,6 +59,10 @@ or like this:
 ```
 [{"value": "1", "text": "Option 1"}, {"value": "2", "text": "Option 2"}, ...]
 ```
+or like this:
+```
+[{"A": "Option A"}, {"B": "Option B"}, {"C": "Option C"}, ...]
+```
 In the last case use the option parameter 'keyAsValue'
 ```javascript
 $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'), {keyAsValue: true});
