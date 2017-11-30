@@ -76,4 +76,4 @@ $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'),
 |debug|bool|Print the response in the console on fail|
 
 ### Return
-* jQuery Return the second select, then we can use the return with a thirdy select.
+* jQuery Return the second select, then we can use the return with a third select.
