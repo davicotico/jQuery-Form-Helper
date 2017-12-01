@@ -83,7 +83,7 @@ $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'),
 Submit all data attributes from a clickable element (anchor, button, etc.)
 
 ```html
-<a href="#" data-id="1121" class="send" action="http://localhost/another_app/save">Send</a>
+<a href="#" data-id="1121" class="send" data-action="http://localhost/another_app/save">Send</a>
 <a href="#" data-id="1122" class="send">Send</a>
 <a href="#" data-id="1123" class="send">Send</a>
 ```
@@ -94,7 +94,7 @@ $('.send').clickSubmit({action: 'http://localhost/app/save'});
 ## .clickAjax(options)
 Send an Ajax Post Request with all data attributes from a clickable element.
 ```html
-<a href="#" data-id="1121" class="send" action="http://localhost/another_app/save">Send</a>
+<a href="#" data-id="1121" class="send" data-action="http://localhost/another_app/save">Send</a>
 <a href="#" data-id="1122" class="send">Send</a>
 <a href="#" data-id="1123" class="send">Send</a>
 ```
