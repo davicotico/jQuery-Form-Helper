@@ -62,7 +62,37 @@
         }
         this.find("[name='" + name + "\\[\\]']").prop('checked', checked);
     };
-
+    
+    //    $(this).saveAjax({
+//        initFields: function(f, v){ $('[name='+v.name+']').css({"border-color": "green"})},
+//        onSuccess: function(r){alert('Success: '+r);},
+//        onError: function(r){ alert(JSON.stringify(r)); }
+//        });
+    $.fn.saveAjax = function (options) {
+        var settings = $.extend({
+            initFields: function(){},
+            onSuccess: function(){},
+            onError: function(){},
+            onFail: function(){}
+        }, options);
+        var action = this.attr('action');
+        var data = this.serializeArray();
+        $.each(data, settings.initFields);
+        var $postAjx = $.post(action, data);
+        $postAjx.done(function (result) {
+            if (result.hasOwnProperty('success')) {
+                settings.onSuccess(result);
+            } else{
+                settings.onError(result);
+            }
+        });
+        $postAjx.fail(function (e) {
+            settings.onFail(e);
+        });
+    };
+    /**
+     * @deprecated 
+    **/
     $.fn.postAjax = function (options) {
         var settings = $.extend({selectorMessage: '#message', errorClass: 'error', debug: false}, options);
         var action = this.attr('action');
