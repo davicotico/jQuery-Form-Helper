@@ -19,7 +19,7 @@ We have a checkbox array:
 <label><input type="checkbox" name="myCheckbox[]" value="3"> Option 3</label>
 ```
 
-Check input checkbox with name "nameCheckbox" and values "1", "3" (Option 1 and Option 3)
+Check input checkbox with name "myCheckbox" and values "1", "3" (Option 1 and Option 3)
 ```javascript
 $('#myForm').checkInput('myCheckbox', ["1", "3"]);
 ```
@@ -27,14 +27,14 @@ $('#myForm').checkInput('myCheckbox', ["1", "3"]);
 
 We have a checkbox array:
 ```html
-<label><input type="checkbox" name="nameCheckbox[]" value="1"> Option 1</label>
-<label><input type="checkbox" name="nameCheckbox[]" value="2"> Option 2</label>
-<label><input type="checkbox" name="nameCheckbox[]" value="3"> Option 3</label>
+<label><input type="checkbox" name="myCheckbox[]" value="1"> Option 1</label>
+<label><input type="checkbox" name="myCheckbox[]" value="2"> Option 2</label>
+<label><input type="checkbox" name="myCheckbox[]" value="3"> Option 3</label>
 ```
 
-Check all input checkbox with name "nameCheckbox"
+Check all input checkbox with name "myCheckbox"
 ```javascript
-$('#myForm').checkAll('nameCheckbox', true); // for unchecked: Set false the last parameter
+$('#myForm').checkAll('myCheckbox', true); // for unchecked: Set false the last parameter
 ```
 Check/Uncheck using another input checkbox
 ```html
@@ -42,7 +42,7 @@ Check/Uncheck using another input checkbox
 <label><input type="checkbox" id="masterCheckbox"> Check All</label>
 ```
 ```javascript
-$('#myForm').checkAll('nameCheckbox', $("#masterCheckbox")); // And here connect the master checkbox
+$('#myForm').checkAll('myCheckbox', $("#masterCheckbox")); // And here connect the master checkbox
 ```
 ## .chainedSelect(action, jqSelect2, options)
 Chain input select and populate select with result ajax.
