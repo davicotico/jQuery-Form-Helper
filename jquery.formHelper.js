@@ -196,12 +196,15 @@
      * @param {object} options 
      * */
     $.fn.clickSubmit = function (options) {
-        var settings = $.extend({ignore: [], addData: {}, method: 'post'}, options);
+        var settings = $.extend({ignore: [], addData: {}, method: 'post', action: ''}, options);
         this.click(function (e) {
             e.preventDefault();
             $(this).prop('disabled', true).addClass('disabled');
             let dataaction = $(this).data('action');
             let action = (dataaction === 'undefined') ? $(this).attr('href') : dataaction;
+            if ((action==='undefined')||(action==='')){
+                action = settings.action;
+            }
             $(this).removeData('action').removeAttr('data-action');
             let data = $(this).data();
             let $f = $('<form>').attr({method: settings.method, action: action}).hide();
@@ -220,7 +223,6 @@
         });
     };
     /**
-     * click
      * Send an Ajax Post Request with all data attributes from a clickable element.
      * Options:
      * ========
@@ -232,13 +234,16 @@
      * @param {object} options 
      * */
     $.fn.clickAjax = function (options) {
-        var settings = $.extend({ignore: [], addData: {}, method: 'post', dataType: 'text', start: null, done: null, fail: null}, options);
+        var settings = $.extend({ignore: [], addData: {}, method: 'post', action:'', dataType: 'text', start: null, done: null, fail: null}, options);
         var $btnTarget = null;
         this.click(function (e) {
             e.preventDefault();
             $btnTarget = $(this);
             let dataaction = $(this).data('action');
             let action = (dataaction === 'undefined') ? $(this).attr('href') : dataaction;
+            if ((action==='undefined')||(action==='')){
+                action = settings.action;
+            }
             $(this).removeData('action').removeAttr('data-action');
             let fdata = $(this).data();
             let data = {};
