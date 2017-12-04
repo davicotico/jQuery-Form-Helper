@@ -160,25 +160,34 @@
         return $sel2;
     };
 
-    $.fn.saveAjax = function (options) {
+    $.fn.submitAjax = function (options) {
         var settings = $.extend({
+            classButtonDisabled: 'disabled',
             before: function(){},
+            after: function(){},
             onSuccess: function(){},
             onError: function(){},
             onFail: function(){}
         }, options);
-        var action = this.attr('action');
+        let action = this.attr('action');
+        let method = this.attr('method');
         var data = this.serializeArray();
-        settings.before(this);
-        var $postAjx = $.post(action, data);
-        $postAjx.done(function (result) {
+        var $form = this;
+        var $btnSubmit = $form.find('[type=submit]').prop('disabled', true).attr('disabled', true).addClass(settings.classButtonDisabled);
+        settings.before($form, $btnSubmit);
+        let $xhr = $.ajax({type: method, url: action, data: data, dataType: 'json'});
+        $xhr.done(function (result) {
             if (result.hasOwnProperty('error')) {
                 settings.onError(result);
             } else{
                 settings.onSuccess(result);
             }
         });
-        $postAjx.fail(function (e) {
+        $xhr.always(function(r){
+            $btnSubmit.prop('disabled', false).removeAttr('disabled').removeClass(settings.classButtonDisabled);
+            settings.after($form, $btnSubmit);
+        });
+        $xhr.fail(function (e) {
             settings.onFail(e);
         });
     };
