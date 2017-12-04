@@ -78,6 +78,24 @@ $('#select1').chainedSelect('http://yourdomain.com/app/post.php', $('#select2'),
 ### Return
 * jQuery Return the second select, then we can use the return with a third select.
 
+## .submitAjax(options)
+
+Perform an asynchronous HTTP (Ajax) request from a form.
+
+```html
+<form action="user/save" method="post" id="myForm">
+<input type="text" name="username" value="">
+<input type="text" name="email" value="456">
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+```
+```javascript
+$('#myForm').submit(function(e){
+    e.preventDefault();
+    $(this).submitAjax();
+});
+```
+
 ## .clickSubmit(options)
 
 Submit all data attributes from a clickable element (anchor, button, etc.)
