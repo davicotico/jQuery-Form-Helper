@@ -61,7 +61,7 @@ or like this:
 ```
 or like this:
 ```
-[{"A": "Option A"}, {"B": "Option B"}, {"C": "Option C"}, ...]
+[{"1": "Option 2"}, {"2": "Option 2"}, {"3": "Option 3"}, ...]
 ```
 In the last case use the option parameter 'keyAsValue'
 ```javascript
