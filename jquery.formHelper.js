@@ -63,64 +63,6 @@
         this.find("[name='" + name + "\\[\\]']").prop('checked', checked);
     };
     
-    //    $(this).saveAjax({
-//        initFields: function(f, v){ $('[name='+v.name+']').css({"border-color": "green"})},
-//        onSuccess: function(r){alert('Success: '+r);},
-//        onError: function(r){ alert(JSON.stringify(r)); }
-//        });
-    $.fn.saveAjax = function (options) {
-        var settings = $.extend({
-            initFields: function(){},
-            onSuccess: function(){},
-            onError: function(){},
-            onFail: function(){}
-        }, options);
-        var action = this.attr('action');
-        var data = this.serializeArray();
-        $.each(data, settings.initFields);
-        var $postAjx = $.post(action, data);
-        $postAjx.done(function (result) {
-            if (result.hasOwnProperty('success')) {
-                settings.onSuccess(result);
-            } else{
-                settings.onError(result);
-            }
-        });
-        $postAjx.fail(function (e) {
-            settings.onFail(e);
-        });
-    };
-    /**
-     * @deprecated 
-    **/
-    $.fn.postAjax = function (options) {
-        var settings = $.extend({selectorMessage: '#message', errorClass: 'error', debug: false}, options);
-        var action = this.attr('action');
-        var data = this.serializeArray();
-        $.each(data, function (k, v) {
-            $("[name='" + v.name + "']").removeClass(settings.errorClass);
-        });
-        var $postAjx = $.post(action, data);
-        $postAjx.done(function (result) {
-            var msg = '';
-            if (result.hasOwnProperty('valid')) {
-                msg = result.text;
-            } else {
-                $.each(result, function (k, v) {
-                    $("[name='" + k + "']").addClass(settings.errorClass);
-                    msg += '<p>' + v + '</p>';
-                });
-            }
-            $(settings.selectorMessage).html(msg).hide().fadeIn('slow');
-            if (settings.debug)
-                console.log(result);
-        });
-        $postAjx.fail(function (e) {
-            $(settings.selectorMessage).html('Error on request').hide().fadeIn('slow');
-            if (settings.debug)
-                console.log(e.statusText);
-        });
-    };
     /**
      * @param {mixed} values The values in JSON format (Javascript object or string) 
      * */
@@ -216,6 +158,29 @@
             });
         });
         return $sel2;
+    };
+
+    $.fn.saveAjax = function (options) {
+        var settings = $.extend({
+            before: function(){},
+            onSuccess: function(){},
+            onError: function(){},
+            onFail: function(){}
+        }, options);
+        var action = this.attr('action');
+        var data = this.serializeArray();
+        settings.before(this);
+        var $postAjx = $.post(action, data);
+        $postAjx.done(function (result) {
+            if (result.hasOwnProperty('error')) {
+                settings.onError(result);
+            } else{
+                settings.onSuccess(result);
+            }
+        });
+        $postAjx.fail(function (e) {
+            settings.onFail(e);
+        });
     };
 
     /**

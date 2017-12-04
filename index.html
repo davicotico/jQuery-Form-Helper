@@ -13,7 +13,7 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-3">jQuery formHelper by Davicotico</h1>
-                <p class="lead">Code less, do more. This package with plugins is about that.</p>
+                <p class="lead">Code less, do more. This plugin package is about that for form elements.</p>
             </div>
         </div>
         <div class="container">
@@ -103,7 +103,12 @@
                 </div>
             </div>
         </div>
-        <script src="js/jquery.min.js?v=2"></script>
+        <form id="myFormSimple" action="test.php" method="post">
+            <input type="text" name="field1" value="123">
+            <input type="text" name="field2" value="123">
+            <button type="submit" id="btnSubmit">Send</button>
+        </form>
+        <script src="js/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="jquery.formHelper.js"></script>
@@ -122,6 +127,17 @@
                 $('#myForm2').checkAll('check1', $('#masterCheck1'));
                 $('#myForm2').checkAll('check1', $('#masterCheck2'));
                 
+                $('#myFormSimple').submit(function(e){
+                    e.preventDefault();
+                    function init($form){ 
+                        console.log($form);
+                    }
+                    $(this).saveAjax({
+                        before: init,
+                        onSuccess: function(r){alert('Success: '+r);},
+                        onError: function(r){ alert(JSON.stringify(r)); }
+                    });
+                });
             });
         </script>
     </body>
