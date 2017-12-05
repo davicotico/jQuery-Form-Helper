@@ -14,11 +14,10 @@
         }
     };
 
-    $.fn.checkInput = function (name, values, options) {
-        var settings = $.extend({isString: false}, options);
+    $.fn.checkInput = function (name, values) {
         var $el = this.find("[name='" + name + "']");
         var data = values;
-        if (settings.isString) {
+        if (typeof values === 'string'){
             data = JSON.parse(values);
         }
         if ($.isArray(data)) {
