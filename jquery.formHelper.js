@@ -75,9 +75,9 @@
         }
         $.each(data, function (name, val) {
             var $el = $form.find("[name='" + name + "']");
-            let isSelect = $el.is('select');
+            var isSelect = $el.is('select');
             if ($.isArray(val)){
-                let selector = "[name='" + name + "\\[\\]']";
+                var selector = "[name='" + name + "\\[\\]']";
                 $el = $form.find(selector);
             }
             var type = (isSelect) ? 'select' : $el.attr('type');
@@ -98,7 +98,7 @@
                 case 'select':
                     if ($.isArray(val)){
                         $el.children('option').each(function(){
-                            let state = methods.inArray($(this).val(), val);
+                            var state = methods.inArray($(this).val(), val);
                             $(this).prop('selected', state);
                         });
                     } else{
@@ -122,7 +122,7 @@
         var $sel2 = (select2 instanceof jQuery) ? select2 : $(select2);
         var key = this.attr('name');
         function formatOption(obj) {
-            let type = ($.type(obj)), opt = {value: '', text: ''};
+            var type = ($.type(obj)), opt = {value: '', text: ''};
             if ((type === 'string') || (type === 'number')) {
                 opt.value = obj;
                 opt.text = obj;
@@ -144,8 +144,8 @@
             $.post(action, data).done(function (result) {
                 $sel2.empty();
                 $.each(result, function (k, v) {
-                    let $opt = $('<option>');
-                    let item = formatOption(v);
+                    var $opt = $('<option>');
+                    var item = formatOption(v);
                     $opt.val(item.value).append(item.text);
                     $sel2.append($opt);
                 });
@@ -168,13 +168,13 @@
             onError: function(){},
             onFail: function(){}
         }, options);
-        let action = this.attr('action');
-        let method = this.attr('method');
+        var action = this.attr('action');
+        var method = this.attr('method');
         var data = this.serializeArray();
         var $form = this;
         var $btnSubmit = $form.find('[type=submit]').prop('disabled', true).attr('disabled', true).addClass(settings.classButtonDisabled);
         settings.before($form, $btnSubmit);
-        let $xhr = $.ajax({type: method, url: action, data: data, dataType: 'json'});
+        var $xhr = $.ajax({type: method, url: action, data: data, dataType: 'json'});
         $xhr.done(function (result) {
             if (result.hasOwnProperty('error')) {
                 settings.onError(result);
@@ -203,22 +203,22 @@
         this.click(function (e) {
             e.preventDefault();
             $(this).prop('disabled', true).addClass('disabled');
-            let dataaction = $(this).data('action');
-            let action = (dataaction === 'undefined') ? $(this).attr('href') : dataaction;
+            var dataaction = $(this).data('action');
+            var action = (dataaction === 'undefined') ? $(this).attr('href') : dataaction;
             if ((action==='undefined')||(action==='')){
                 action = settings.action;
             }
             $(this).removeData('action').removeAttr('data-action');
-            let data = $(this).data();
-            let $f = $('<form>').attr({method: settings.method, action: action}).hide();
+            var data = $(this).data();
+            var $f = $('<form>').attr({method: settings.method, action: action}).hide();
             for (var key in data) {
                 if ($.inArray(key, settings.ignore) === -1) {
-                    let $h = $('<input>').attr({type: 'hidden', name: key}).val(data[key]);
+                    var $h = $('<input>').attr({type: 'hidden', name: key}).val(data[key]);
                     $f.append($h);
                 }
             }
             for (var key in settings.addData) {
-                let $h = $('<input>').attr({type: 'hidden', name: key}).val(settings.addData[key]);
+                var $h = $('<input>').attr({type: 'hidden', name: key}).val(settings.addData[key]);
                 $f.append($h);
             }
             $(this).after($f);
@@ -242,14 +242,14 @@
         this.click(function (e) {
             e.preventDefault();
             $btnTarget = $(this);
-            let dataaction = $(this).data('action');
-            let action = (dataaction === 'undefined') ? $(this).attr('href') : dataaction;
+            var dataaction = $(this).data('action');
+            var action = (dataaction === 'undefined') ? $(this).attr('href') : dataaction;
             if ((action==='undefined')||(action==='')){
                 action = settings.action;
             }
             $(this).removeData('action').removeAttr('data-action');
-            let fdata = $(this).data();
-            let data = {};
+            var fdata = $(this).data();
+            var data = {};
             for (var key in fdata) {
                 if ($.inArray(key, settings.ignore) === -1) {
                     data[key] = fdata[key];
@@ -261,7 +261,7 @@
             if (typeof settings.start === 'function') {
                 settings.start();
             }
-            let $xhr = $.ajax({type: settings.method, url: action, data: data, success: success, dataType: settings.dataType});
+            var $xhr = $.ajax({type: settings.method, url: action, data: data, success: success, dataType: settings.dataType});
             if (typeof settings.fail === 'function')
                 $xhr.fail(settings.fail);
             $xhr.always(function () {
