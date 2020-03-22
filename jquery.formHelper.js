@@ -205,7 +205,7 @@
             $(this).prop('disabled', true).addClass('disabled');
             var dataaction = $(this).data('action');
             var action = (dataaction === 'undefined') ? $(this).attr('href') : dataaction;
-            if ((action==='undefined')||(action==='')){
+            if ((typeof action==='undefined')||(action==='')){
                 action = settings.action;
             }
             $(this).removeData('action').removeAttr('data-action');
